@@ -1,5 +1,5 @@
 {
-  "name": "eventsjs",
+  "name": "events-js",
   "main": "dist/events.js",
   "license": "MIT",
   "keywords": [
