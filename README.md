@@ -67,10 +67,12 @@ Events.showEvents();
 
 ```javascript
 
+// register event and add your main code there
 Events.register('analytics.google', (Message) => {
     ga('send', 'event', Message.category, Message.action, Message.label, Message.value);
 });
 
+// fire the event from everywhere in your code
 Events.fire('analytics.google', {
     category: 'reading',
     action: 'started.reading',
