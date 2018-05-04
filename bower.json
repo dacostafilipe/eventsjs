@@ -1,0 +1,11 @@
+{
+  "name": "eventsjs",
+  "main": "dist/events.js",
+  "license": "MIT",
+  "keywords": [
+    "events",
+    "javascript",
+    "browser",
+    "library"
+  ]
+}
