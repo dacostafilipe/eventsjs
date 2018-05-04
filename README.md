@@ -67,7 +67,7 @@ Events.showEvents();
 
 ```javascript
 
-Events.register('action.done', (Message) => {
+Events.register('analytics.google', (Message) => {
     ga('send', 'event', Message.category, Message.action, Message.label, Message.value);
 });
 
