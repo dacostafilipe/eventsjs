@@ -19,7 +19,7 @@ Events.register(EventKey, Callback, Priority);
 ```
 
 - `EventKey` (string) : The name of your event
-- `Callback` (function) : Function that is called when event is fired. A `Message` object is passed to the function with the event payload
+- `Callback` (function) : Function that is called when event is fired. A `Message` object is passed to the function with the event payload and an `Update` callback that allows you modify the `Message` for the next queue element. 
 - `Priority` (int) : Optional priority that defined that register is called first
 
 ***Important*** : The `Callback` function has to return a boolean value, where `true` would continue to call the next listener to `EventKey` and `false` would stop and not continue. 
@@ -70,6 +70,7 @@ Events.showEvents();
 // register event and add your main code there
 Events.register('analytics.google', (Message) => {
     ga('send', 'event', Message.category, Message.action, Message.label, Message.value);
+    return true;
 });
 
 // fire the event from everywhere in your code
@@ -82,6 +83,41 @@ Events.fire('analytics.google', {
 
 ```
 
+```javascript
+
+// register event
+Events.register('submit.data', (Message) => {
+    
+    axios.get(
+        'https://example.domain/api/',
+        {
+            params : Message
+        }
+        )
+        .catch(function (error) {
+            console.log(error);
+        })
+    
+    return true;
+    
+});
+
+// register event with high priority. This will get called before the event above even if it's registered after.
+Events.register('submit.data', (Message, Update) => {
+    
+    Message.injected = true; // modify message
+    
+    Update(Message); // update the message to force our changes to all the next event calls
+      
+}, 10000 );
+
+// fire event
+Events.fire('submit.data', {
+    name : 'testing',
+    injected : false
+});
+
+```
 
 
 

@@ -142,7 +142,9 @@ class Events {
                 for (let Y = 0; Y < priorityArray.length; Y++) {
 
                     let hashValue = priorityArray[Y];
-                    let returnValue = this.hashes.get(hashValue)(pMessage);
+                    let returnValue = this.hashes.get(hashValue)(pMessage, (aNewMessage) => {
+                        pMessage = aNewMessage;
+                    });
 
                     if (this.once.indexOf(hashValue) > -1) {
                         this.unregister(pLabel, hashValue);
