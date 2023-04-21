@@ -11,24 +11,6 @@ module.exports = {
         library : 'Events',
         libraryTarget: 'var'
     },
-    module: {
-        loaders: [
-            {
-                test: /\.js$/,
-                loader: 'babel-loader',
-                exclude: /node_modules/,
-                query: {
-                    presets: ['env']
-                }
-            }
-        ]
-    },
-    watchOptions: {
-        poll: true
-    },
-    stats: {
-        colors: true
-    },
     devtool: 'source-map',
 	plugins: [
 		new webpack.DefinePlugin({

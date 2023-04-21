@@ -1,19 +1,23 @@
 {
-  "name": "fdc-events-js",
-  "version": "1.0.4",
-  "description": "",
+  "name": "my-webpack-project",
+  "version": "1.0.0",
+  "description": "My webpack project",
   "scripts": {
-    "build": "webpack --config webpack.dist.config.js",
-    "build-dev": "webpack --config webpack.dev.config.js"
+    "build": "webpack --mode=production --node-env=production",
+    "build-dev": "webpack --config webpack.dev.config.js",
+    "build:dev": "webpack --mode=development",
+    "build:prod": "webpack --mode=production --node-env=production",
+    "watch": "webpack --watch",
+    "serve": "webpack serve"
   },
   "devDependencies": {
-    "jshashtable": "^0.1.0",
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-plugin-object-rest-spread": "0.0.0",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "webpack": "^3.6.0"
+    "@webpack-cli/generators": "^3.0.1",
+    "prettier": "^2.8.7",
+    "ts-loader": "^9.4.2",
+    "typescript": "^5.0.4",
+    "webpack": "^5.80.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.13.3"
   },
   "author": "Filipe DA COSTA (dacosta.lu)",
   "license": "ISC"
